@@ -19,10 +19,10 @@
         <v-card-text>
             <String label="CustomerId" v-model="value.customerId" :editMode="editMode"/>
             <String label="FoodId" v-model="value.foodId" :editMode="editMode"/>
-            <Address offline label="Adress" v-model="value.adress" :editMode="editMode" @change="change"/>
+            <String label="Adress" v-model="value.adress" :editMode="editMode"/>
             <String label="Options" v-model="value.options" :editMode="editMode"/>
             <String label="Status" v-model="value.status" :editMode="editMode"/>
-            <Number label="Price" v-model="value.price" :editMode="editMode"/>
+            <String label="Price" v-model="value.price" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -82,12 +82,10 @@
 <script>
     const axios = require('axios').default;
 
-    import Address from './vo/Address.vue';
 
     export default {
         name: 'Order',
         components:{
-            Address,
         },
         props: {
             value: [Object, String, Number, Boolean, Array],

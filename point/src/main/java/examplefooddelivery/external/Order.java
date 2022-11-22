@@ -1,16 +1,17 @@
 package examplefooddelivery.external;
 
-import java.util.Date;
 import lombok.Data;
-
+import java.util.Date;
 @Data
 public class Order {
 
     private Long id;
     private String customerId;
     private String foodId;
-    private Object adress;
+    private String adress;
     private Object options;
     private String status;
-    private Long price;
+    private String price;
 }
+
+

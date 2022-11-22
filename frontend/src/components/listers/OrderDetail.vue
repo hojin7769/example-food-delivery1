@@ -11,13 +11,15 @@
             <div>
                 <String label="FoodId" v-model="item.foodId" :editMode="editMode" @change="change" />
             </div>
-            <Address offline label="Adress" v-model="item.adress" :editMode="false" @change="change" />
+            <div>
+                <String label="Adress" v-model="item.adress" :editMode="editMode" @change="change" />
+            </div>
             <StringManager offline label="Options" v-model="item.options" :editMode="false" @change="change" />
             <div>
                 <String label="Status" v-model="item.status" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <Number label="Price" v-model="item.price" :editMode="editMode" @change="change" />
+                <String label="Price" v-model="item.price" :editMode="editMode" @change="change" />
             </div>
         </v-card-text>
 
