@@ -1,6 +1,8 @@
 package examplefooddelivery.domain;
 
 import examplefooddelivery.CustomerApplication;
+
+import java.nio.channels.NotYetBoundException;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -33,6 +35,11 @@ public class NotifyLog {
 
         */
 
+        NotifyLog notifyLog = new NotifyLog();
+        notifyLog.setOrderId(String.valueOf(orderPlaced.getId()));
+        notifyLog.setMessage("주문됨");
+        repository().save(notifyLog);
+
         /** Example 2:  finding and process
         
         repository().findById(orderPlaced.get???()).ifPresent(notifyLog->{
@@ -52,6 +59,11 @@ public class NotifyLog {
         repository().save(notifyLog);
 
         */
+
+        NotifyLog notifyLog = new NotifyLog();
+        notifyLog.setOrderId(String.valueOf(orderAccept.getOrderId()));
+        notifyLog.setMessage("접수됨");
+        repository().save(notifyLog);
 
         /** Example 2:  finding and process
         
@@ -73,6 +85,11 @@ public class NotifyLog {
 
         */
 
+        NotifyLog notifyLog = new NotifyLog();
+        notifyLog.setOrderId(String.valueOf(orderReject.getOrderId()));
+        notifyLog.setMessage("취소됨");
+        repository().save(notifyLog);
+
         /** Example 2:  finding and process
         
         repository().findById(orderReject.get???()).ifPresent(notifyLog->{
@@ -92,7 +109,11 @@ public class NotifyLog {
         repository().save(notifyLog);
 
         */
-
+        
+        NotifyLog notifyLog = new NotifyLog();
+        notifyLog.setOrderId(String.valueOf(cookStarted.getOrderId()));
+        notifyLog.setMessage("조리시작됨");
+        repository().save(notifyLog);
         /** Example 2:  finding and process
         
         repository().findById(cookStarted.get???()).ifPresent(notifyLog->{
@@ -112,6 +133,11 @@ public class NotifyLog {
         repository().save(notifyLog);
 
         */
+
+        NotifyLog notifyLog = new NotifyLog();
+        notifyLog.setOrderId(String.valueOf(cookFinished.getOrderId()));
+        notifyLog.setMessage("조리 끝");
+        repository().save(notifyLog);
 
         /** Example 2:  finding and process
         
@@ -133,6 +159,11 @@ public class NotifyLog {
 
         */
 
+        NotifyLog notifyLog = new NotifyLog();
+        notifyLog.setOrderId(String.valueOf(picked.getOrderId()));
+        notifyLog.setMessage("조리 끝");
+        repository().save(notifyLog);
+
         /** Example 2:  finding and process
         
         repository().findById(picked.get???()).ifPresent(notifyLog->{
@@ -152,6 +183,11 @@ public class NotifyLog {
         repository().save(notifyLog);
 
         */
+
+        NotifyLog notifyLog = new NotifyLog();
+        notifyLog.setOrderId(String.valueOf(paid.getOrderId()));
+        notifyLog.setMessage("결제완료");
+        repository().save(notifyLog);
 
         /** Example 2:  finding and process
         

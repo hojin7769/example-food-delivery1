@@ -30,15 +30,19 @@ public class Store {
     @PostPersist
     public void onPostPersist() {
         OrderAccept orderAccept = new OrderAccept(this);
+        orderAccept.setStatus("접수됨");
         orderAccept.publishAfterCommit();
 
         OrderReject orderReject = new OrderReject(this);
+        orderReject.setStatus("취소됨");
         orderReject.publishAfterCommit();
 
         CookStarted cookStarted = new CookStarted(this);
+        cookStarted.setStatus("조리시작");
         cookStarted.publishAfterCommit();
 
         CookFinished cookFinished = new CookFinished(this);
+        cookFinished.setStatus("조리끝");
         cookFinished.publishAfterCommit();
     }
 
@@ -56,6 +60,15 @@ public class Store {
 
         */
 
+        Store store = new Store();
+        store.setOrderId(paid.getOrderId());
+        store.setStatus("결제됨");
+        repository().save(store);
+
+
+
+        
+
         /** Example 2:  finding and process
         
         repository().findById(paid.get???()).ifPresent(store->{
@@ -66,7 +79,6 @@ public class Store {
 
          });
         */
-
     }
 
     public static void 주문취소알림(OrderCancled orderCancled) {

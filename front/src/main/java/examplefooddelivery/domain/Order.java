@@ -34,13 +34,20 @@ public class Order {
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
-        examplefooddelivery.external.Payment payment = new examplefooddelivery.external.Payment();
+        //  examplefooddelivery.external.Payment payment = new examplefooddelivery.external.Payment();
+        //  payment.setOrderId(String.valueOf(id));
         // mappings goes here
-        FrontApplication.applicationContext
-            .getBean(examplefooddelivery.external.PaymentService.class)
-            .pay(payment);
+        //  FrontApplication.applicationContext
+        //     .getBean(examplefooddelivery.external.PaymentService.class)
+        //      .pay(payment);
 
+             try {
+                Thread.currentThread().sleep((long) (400 + Math.random() * 220));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         OrderPlaced orderPlaced = new OrderPlaced(this);
+        orderPlaced.setStatus("접수됨");
         orderPlaced.publishAfterCommit();
     }
 
@@ -66,6 +73,12 @@ public class Order {
         repository().save(order);
 
         */
+        Order order = new Order();
+        if(orderReject.getStatus().equals("취소됨")){
+            order.setStatus("취소됨");
+             repository().save(order);
+        }
+        
 
         /** Example 2:  finding and process
         

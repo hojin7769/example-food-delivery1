@@ -1,5 +1,12 @@
 server:
   port: 8080
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution.isolation.thread.timeoutInMilliseconds: 500
 spring:
   application:
     name: front
@@ -76,5 +83,7 @@ spring:
 api:
   url:
     front: front:8080
+---
+
 
 
