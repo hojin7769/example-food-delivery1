@@ -24,8 +24,6 @@ public class Order {
     @Embedded
     private String adress;
 
-    @ElementCollection
-    private List<String> options;
 
     private String status;
 
