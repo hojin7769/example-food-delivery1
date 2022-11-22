@@ -2,6 +2,7 @@ package examplefooddelivery.domain;
 
 import examplefooddelivery.PointApplication;
 import examplefooddelivery.domain.UpPointed;
+import examplefooddelivery.domain.UsedPoint;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -26,6 +27,18 @@ public class Point {
     public void onPostPersist() {
         UpPointed upPointed = new UpPointed(this);
         upPointed.publishAfterCommit();
+
+        //Following code causes dependency to external APIs
+        // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
+
+        examplefooddelivery.external.Payment payment = new examplefooddelivery.external.Payment();
+        // mappings goes here
+        PointApplication.applicationContext
+            .getBean(examplefooddelivery.external.PaymentService.class)
+            .pay(payment);
+
+        UsedPoint usedPoint = new UsedPoint(this);
+        usedPoint.publishAfterCommit();
     }
 
     public static PointRepository repository() {
@@ -40,6 +53,8 @@ public class Point {
         Point point = new Point();
         repository().save(point);
 
+        UpPointed upPointed = new UpPointed(point);
+        upPointed.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -49,6 +64,8 @@ public class Point {
             point // do something
             repository().save(point);
 
+            UpPointed upPointed = new UpPointed(point);
+            upPointed.publishAfterCommit();
 
          });
         */

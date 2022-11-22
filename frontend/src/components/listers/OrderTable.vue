@@ -70,7 +70,6 @@
                     { text: "customerId", value: "customerId" },
                     { text: "foodId", value: "foodId" },
                     { text: "adress", value: "adress" },
-                    { text: "options", value: "options" },
                     { text: "status", value: "status" },
                     { text: "price", value: "price" },
                 ],
@@ -93,9 +92,8 @@
                 'customerId': '',
                 'foodId': '',
                 'adress': '',
-                'options': [],
                 'status': '',
-                'price': 0,
+                'price': '',
             }
         },
         methods: {

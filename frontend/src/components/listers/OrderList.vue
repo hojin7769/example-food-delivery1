@@ -15,7 +15,6 @@
                             
                             
                             
-                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
@@ -23,7 +22,6 @@
                             [ CustomerId :  {{data.customerId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ FoodId :  {{data.foodId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Adress :  {{data.adress }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ Options :  {{data.options }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Status :  {{data.status }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Price :  {{data.price }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
@@ -110,9 +108,8 @@
                 'customerId': '',
                 'foodId': '',
                 'adress': '',
-                'options': [],
                 'status': '',
-                'price': 0,
+                'price': '',
             }
         },
         methods: {

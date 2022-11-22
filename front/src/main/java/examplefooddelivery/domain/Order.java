@@ -1,104 +1,64 @@
 package examplefooddelivery.domain;
 
-import examplefooddelivery.domain.OrderPlaced;
-import examplefooddelivery.domain.OrderCancled;
 import examplefooddelivery.FrontApplication;
-import javax.persistence.*;
-import java.util.List;
-import lombok.Data;
+import examplefooddelivery.domain.OrderCancled;
+import examplefooddelivery.domain.OrderPlaced;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.*;
+import lombok.Data;
 
 @Entity
-@Table(name="Order_table")
+@Table(name = "Order_table")
 @Data
+public class Order {
 
-public class Order  {
-
-    
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    
-    
-    
-    
-    
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    
-    
-    
-    
+
     private String customerId;
-    
-    
-    
-    
-    
+
     private String foodId;
-    
-    
-    
-    
-    
+
     private String adress;
-    
-    
-    
-    @ElementCollection
-    
-    private List<String> options;
-    
-    
-    
-    
-    
+
     private String status;
-    
-    
-    
-    
-    
+
     private String price;
 
     @PostPersist
-    public void onPostPersist(){
-
+    public void onPostPersist() {
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
-
         examplefooddelivery.external.Payment payment = new examplefooddelivery.external.Payment();
         // mappings goes here
-        FrontApplication.applicationContext.getBean(examplefooddelivery.external.PaymentService.class)
+        FrontApplication.applicationContext
+            .getBean(examplefooddelivery.external.PaymentService.class)
             .pay(payment);
-
 
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
-
     }
+
     @PostRemove
-    public void onPostRemove(){
-
-
+    public void onPostRemove() {
         OrderCancled orderCancled = new OrderCancled(this);
         orderCancled.publishAfterCommit();
-
     }
+
     @PreRemove
-    public void onPreRemove(){
-    }
+    public void onPreRemove() {}
 
-    public static OrderRepository repository(){
-        OrderRepository orderRepository = FrontApplication.applicationContext.getBean(OrderRepository.class);
+    public static OrderRepository repository() {
+        OrderRepository orderRepository = FrontApplication.applicationContext.getBean(
+            OrderRepository.class
+        );
         return orderRepository;
     }
 
-
-
-
-    public static void updateStatus(OrderReject orderReject){
-
+    public static void updateStatus(OrderReject orderReject) {
         /** Example 1:  new item 
         Order order = new Order();
         repository().save(order);
@@ -116,8 +76,5 @@ public class Order  {
          });
         */
 
-        
     }
-
-
 }

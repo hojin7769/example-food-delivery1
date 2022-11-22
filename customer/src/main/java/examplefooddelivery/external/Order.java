@@ -9,7 +9,6 @@ public class Order {
     private String customerId;
     private String foodId;
     private String adress;
-    private Object options;
     private String status;
     private String price;
 }
