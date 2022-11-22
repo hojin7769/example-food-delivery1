@@ -22,7 +22,7 @@ public class Order {
     private String foodId;
 
     @Embedded
-    private Address adress;
+    private String adress;
 
     @ElementCollection
     private List<String> options;

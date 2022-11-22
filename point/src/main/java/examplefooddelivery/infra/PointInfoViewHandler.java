@@ -25,7 +25,7 @@ public class PointInfoViewHandler {
             PointInfo pointInfo = new PointInfo();
             // view 객체에 이벤트의 Value 를 set 함
             pointInfo.setId(Long.valueOf(delivered.getOrderId()));
-            pointInfo.setPoint(0);
+            pointInfo.setPoint(0L);
             // view 레파지 토리에 save
             pointInfoRepository.save(pointInfo);
         } catch (Exception e) {
