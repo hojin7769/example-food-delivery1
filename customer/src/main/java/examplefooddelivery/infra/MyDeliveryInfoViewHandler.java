@@ -169,7 +169,7 @@ public class MyDeliveryInfoViewHandler {
             if( myDeliveryInfoOptional.isPresent()) {
                  MyDeliveryInfo myDeliveryInfo = myDeliveryInfoOptional.get();
             // view 객체에 이벤트의 eventDirectValue 를 set 함
-                myDeliveryInfo.setStatus(배송완료");    
+                myDeliveryInfo.setStatus("배송완료");    
                 // view 레파지 토리에 save
                  myDeliveryInfoRepository.save(myDeliveryInfo);
                 }
