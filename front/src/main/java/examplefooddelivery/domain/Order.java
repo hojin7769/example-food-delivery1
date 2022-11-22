@@ -29,7 +29,7 @@ public class Order {
 
     private String status;
 
-    private Long price;
+    private String price;
 
     @PostPersist
     public void onPostPersist() {
