@@ -179,6 +179,7 @@ public interface PaymentService {
 
 <img src="https://velog.velcdn.com/images/sungsill1/post/23b188d2-ed18-4d06-8c4c-cb7160ecc28a/image.png" style="zoom: 67%;" />
 
+![image](https://user-images.githubusercontent.com/85658845/203261054-d7c9faba-bbfb-434c-81a8-693a49b167f4.png)
 
 
 ## Gateway
