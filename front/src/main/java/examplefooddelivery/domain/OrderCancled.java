@@ -12,15 +12,15 @@ public class OrderCancled extends AbstractEvent {
     private Long id;
     private String customerId;
     private String foodId;
-    private Address adress;
     private List<String> options;
     private String status;
+    private String adress;
+    private Long price;
 
-    public OrderCancled(Order aggregate) {
+    public OrderCancled(Order aggregate){
         super(aggregate);
     }
-
-    public OrderCancled() {
+    public OrderCancled(){
         super();
     }
 }

@@ -12,15 +12,15 @@ public class OrderPlaced extends AbstractEvent {
     private Long id;
     private String customerId;
     private String foodId;
-    private Address adress;
     private List<String> options;
     private String status;
+    private String adress;
+    private Long price;
 
-    public OrderPlaced(Order aggregate) {
+    public OrderPlaced(Order aggregate){
         super(aggregate);
     }
-
-    public OrderPlaced() {
+    public OrderPlaced(){
         super();
     }
 }
